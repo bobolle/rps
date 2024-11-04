@@ -9,27 +9,20 @@ class Player {
   public:
     int score = 0;
     int move;
-    int pick(int random);
+    void pick(int random);
 };
 
-int Player::pick(int random = false) {
-  int move;
-
+void Player::pick(int random = false) {
   if (random) {
-    return rand() % 3;
+    this->move = rand() % 3;
+  } else {
+    do {
+      cout << "Rock (0), Paper (1) or Scissors (2)?\n";
+      cin >> this->move;
+      cin.clear();
+      cin.ignore(10000, '\n');
+    } while (move < 0 || move > 2);
   }
-
-  do {
-    cout << "Rock (0), Paper (1) or Scissors (2)?\n";
-    cin >> move;
-    if (!cin >> move) {
-      cout << " error " << endl;
-    }
-    cin.clear();
-    cin.ignore(10000, '\n');
-  } while (move < 0 || move > 2);
-
-  return move;
 }
 
 class Game {
@@ -53,28 +46,32 @@ void Game::startGame() {
   Player user;
   Player computer;
 
-  while (user.score < 3 && computer.score << 3) {
+  while (user.score < 3 && computer.score < 3) {
+    //pick
     user.pick();
     computer.pick(true);
 
+    //print
     cout << "Player: " << rpsMoves[user.move] << "\n";
     cout << "Computer: " << rpsMoves[computer.move] << "\n";
 
+    // history
     this->player_total++;
     this->pc_total++;
+    moves_counter[user.move]++;
+    moves_counter[computer.move]++;
 
-    moves_counter[user.move];
-    moves_counter[computer.move];
-
-    if (user.move == computer.move) {
-      cout << "It's a tie!\n";
-    }
+    //replace with comparePick method
+    //if (user.move == computer.move) {
+    //  cout << "It's a tie!\n";
+    //}
   }
-
 }
 
+void Game::comparePicks() {}
+
 void Game::menu() {
-  int menu_answ;
+  int menu_answer;
 
   while (1) {
     cout << "------------------------------" << endl;
@@ -86,8 +83,8 @@ void Game::menu() {
     cout << "------------------------------" << endl;
 
     cout << "What do you want to do?" << endl;
-    cin >> menu_answ;
-    switch (menu_answ)
+    cin >> menu_answer;
+    switch (menu_answer)
     {
       case 1:
         Game::startGame();
@@ -108,10 +105,6 @@ void Game::menu() {
     }
   }
 }
-
-void Game::comparePicks() {}
-
-
 
 int main() {
   srand(time(0));
