@@ -3,6 +3,9 @@
 ## Usage
 
 ```
+
+git clone https://github.com/bobolle/rps.git
+# if you use ssh use this instead
 git clone git@github.com:bobolle/rps.git
 g++ -std=c++11 rps.cpp -o rps
 ./rps
