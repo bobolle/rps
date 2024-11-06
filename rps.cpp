@@ -61,10 +61,7 @@ void Game::startGame() {
     moves_counter[user.move]++;
     moves_counter[computer.move]++;
 
-    //replace with comparePick method
-    //if (user.move == computer.move) {
-    //  cout << "It's a tie!\n";
-    //}
+    //Ludde
   }
 }
 
