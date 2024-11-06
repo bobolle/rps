@@ -3,6 +3,7 @@
 ## Usage
 
 ```
+git clone git@github.com:bobolle/rps.git
 g++ -std=c++11 rps.cpp -o rps
 ./rps
 ```
