@@ -39,8 +39,15 @@ class Game {
 };
 
 void Game::print_statistics() {
-  
-}
+        
+          std::cout << "Total MOVES PER CHOICE\n"
+                    << rpsMoves[0] << " " << this->moves_counter[0] << "\n" 
+                    << rpsMoves[1] << " " << this->moves_counter[1] << "\n"
+                    << rpsMoves[2] << " " << this->moves_counter[2] << "\n"
+                    << "Total by User:  "   << player_total << "\n"
+                    << "Total by Computer: "<<  pc_total << "\n";
+       
+}   
 
 void Game::startGame() {
   Player user;
@@ -61,14 +68,16 @@ void Game::startGame() {
     moves_counter[user.move]++;
     moves_counter[computer.move]++;
 
-    //replace with comparePick method
-    //if (user.move == computer.move) {
+    //  replace with comparePick method
+    //  if (user.move == computer.move) {
     //  cout << "It's a tie!\n";
     //}
   }
 }
 
-void Game::comparePicks() {}
+void Game::comparePicks() {
+
+}
 
 void Game::menu() {
   int menu_answer;
